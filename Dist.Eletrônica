@@ -1,0 +1,86 @@
+
+while True:
+ print('Distribuição eletrônica.');
+ e = int(input('Digite a massa atômica do elemento ou digite "0" para fechar o programa:'))
+ He=str('1s2')
+ Ne=str('1s2;2s2;2p6')
+ Ar=str('1s2;2s2;2p6;3s2;3p6')
+ Kr=str('1s2;2s2;2p6;3s2;3p6;4s2;3d10;4p6')
+ Xe=str('1s2;2s2;2p6;3s2;3p6;4s2;3d10;4p6;5s2;4d10;5p6')
+ Rn=str('1s2;2s2;2p6;3s2;3p6;4s2;3d10;4p6;5s2;4d10;5p6;6s2;4f14;5d10;6p6')
+ if (e==0):
+     break
+ if e in(1,2):
+    print('A distribuição eletrônica é:''1s%i'%e)
+ if e in range(3,11,1):
+    e-=2
+    p=2
+    if(e<=2):
+        print('%s 2s%i'%(He,e))
+    else:
+        e -= 2;
+        print('%s %is2 %ip%i'%(He,p,p,e))
+ if e in range(11,19,1):
+    p = 3
+    e-=10
+    if(e<=2):
+       print('%s;%is%i' % (Ne,p,e))
+    else:
+        e -= 2;
+        print('%s;%is2;%ip%i' %(Ne, p, p, e))
+ if e in range(19,37,1):
+    p=4
+    e-=18
+    if (e <= 2):
+        print('%s;%is%i' % (Ar, p, e))
+    elif(e>=3 and e<=12):
+       e-=2
+       print('%s;%is2;%id%i' % (Ar, p,p-1, e))
+    elif(e>=11 and e<=18):
+        e-=12
+        print('%s;%is2;3d10;%ip%i' % (Ar, p, p, e))
+ if e in range(37,55,1):
+    p=5
+    e-=36
+    if (e<=2) :
+        print('%s;%is%i' % (Kr, p, e))
+    elif (e >= 3 and e <= 12):
+        e -= 2
+        print('%s;%is2;%id%i' % (Kr, p, p - 1, e))
+    elif (e >= 11 and e <= 18):
+        e -= 12
+        print('%s;%is2;4d10;%ip%i' % (Kr, p, p, e))
+ if e in range(55,87,1):
+     p=6
+     e-=54
+     if (e <= 2):
+         print('%s;%is%i' % (Xe, p, e))
+     elif (e>=3 and e<=16):
+         e-=2
+         print('%s;%is2;%if%i' % (Xe, p, p - 2, e))
+     elif(e>=17 and e<=26):
+         e-=16
+         print('%s;%is2;%if14;%id%i' % (Xe, p,p-2, p - 1, e))
+     elif(e>=27 and e<=32):
+         e-=26
+         print('%s;%is2;%if14;%id10;%ip%i' % (Xe, p,p-2, p - 1,p, e))
+ if e in range(87,119,1):
+     p=7
+     e-=86
+     if (e <= 2):
+         print('%s;%is%i' % (Rn, p, e))
+     elif (e >= 3 and e <= 16):
+         e -= 2
+         print('%s;%is2;%if%i' % (Rn, p, p - 2, e))
+     elif (e >= 17 and e <= 26):
+         e -= 16
+         print('%s;%is2;%if14;%id%i' % (Rn, p, p - 2, p - 1, e))
+     elif (e >= 27 and e <= 32):
+         e -= 26
+         print('%s;%is2;%if14;%id10;%ip%i' % (Rn, p, p - 2, p - 1, p, e))
+ print('.'
+       '.'
+       '.'
+       '.'
+       '.'
+       '.')
