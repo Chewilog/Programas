@@ -1,0 +1,26 @@
+#Cramer
+print ('Regra de Cramer!!!')
+#listas que ficarão as linhas.
+l1=[]
+l2=[]
+l3=[]
+for i in range (1,4):#Range 4,pois a matriz possui 4 numeros, 3 coeficientes e o resultado para cada linha.
+    #Abaixo definimos 'a' como a linha pedida em cada ciclo, o valor de 'i' indica qual linha esta. Ex: ciclo 1 = linha 1;ciclo 2 = linha 2 e etc.
+    if i==1: a=l1
+    elif i==2: a=l2
+    elif i==3: a=l3
+    #Pedimos os itens
+    for j in range(1,5):
+        item=int(input('digite o item %i%i:'%(i,j)))
+        a.append(item)#O 'a' representa em qual lista sera adicionada o item.
+zipe=list(zip(l1,l2,l3))#Damos um zip e um list nas linhas para transforma-la em uma lista de tuplas.
+#Usamos os itens conforme a regra de cramer.
+D=((zipe[0][0]*zipe[1][1]*zipe[2][2])+(zipe[1][0]*zipe[2][1]*zipe[0][2])+(zipe[2][0]*zipe[0][1]*zipe[1][2]))-((zipe[1][0]*zipe[0][1]*zipe[2][2])+(zipe[0][0]*zipe[2][1]*zipe[1][2])+(zipe[2][0]*zipe[1][1]*zipe[0][2]))
+Dx=((zipe[3][0]*zipe[1][1]*zipe[2][2])+(zipe[1][0]*zipe[2][1]*zipe[3][2])+(zipe[2][0]*zipe[3][1]*zipe[1][2]))-((zipe[1][0]*zipe[3][1]*zipe[2][2])+(zipe[3][0]*zipe[2][1]*zipe[1][2])+(zipe[2][0]*zipe[1][1]*zipe[3][2]))
+Dy=((zipe[0][0]*zipe[3][1]*zipe[2][2])+(zipe[3][0]*zipe[2][1]*zipe[0][2])+(zipe[2][0]*zipe[0][1]*zipe[3][2]))-((zipe[3][0]*zipe[0][1]*zipe[2][2])+(zipe[0][0]*zipe[2][1]*zipe[3][2])+(zipe[2][0]*zipe[3][1]*zipe[0][2]))
+Dz=((zipe[0][0]*zipe[1][1]*zipe[3][2])+(zipe[1][0]*zipe[3][1]*zipe[0][2])+(zipe[3][0]*zipe[0][1]*zipe[1][2]))-((zipe[1][0]*zipe[0][1]*zipe[3][2])+(zipe[0][0]*zipe[3][1]*zipe[1][2])+(zipe[3][0]*zipe[1][1]*zipe[0][2]))
+#Achamos os valores de x,y e z.
+x=Dx/D
+y=Dy/D
+z=Dz/D
+print('x=%.1f\ny=%.1f\nz=%.1f'%(x,y,z))

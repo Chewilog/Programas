@@ -1,0 +1,46 @@
+import calendar#Vamos importar o modulo calendar
+#Primeiro vamos pedir quando a pessoa nasceu.
+dia=input('Dia de nascimento:')
+mes=input('Mês de nascimento:')
+ano=int(input('Ano de nascimento:'))
+#Vamos verificar se há caracteres inválidos
+def VerificaChar(string):
+    #vamos verificar se o caractere nao tem 0 antes do número.Ex:01,03,09,etc.
+   if string==dia:
+    try:
+     eval(string)
+     return string
+    except:
+      if '0' in string:
+        string=string.replace('0',' ')
+        return string
+   else:
+       try:
+           eval(string)
+           return string
+       except:
+           string=string.replace('0','')
+           return string
+#Vamos gerar um calendario com o ano e mês
+cal=calendar.month(ano,eval(VerificaChar(mes)))
+#Vamos cortar o calendário para não haver problemas na hora de procurar o dia
+cal=cal[cal.index('\n')::]
+#Vamos descobrir o dia que nasceu
+def DiaQueNasceu(cal,dia):
+    if cal.index(dia) in range(cal.index('Mo'),126+cal.index('Mo')+1,21):
+        return print('Você nasceu em uma Segunda-Feira.')
+    elif cal.index(dia) in range(cal.index('Tu'), 126 + cal.index('Tu')+1, 21):
+        return print('Você nasceu em uma Terça-Feira.')
+    elif cal.index(dia) in range(cal.index('We'), 126 + cal.index('We')+1, 21):
+        return print('Você nasceu em uma Quarta-Feira.')
+    elif cal.index(dia) in range(cal.index('Th'), 126 + cal.index('Th')+1, 21):
+        return print('Você nasceu em uma Quinta-Feira.')
+    elif cal.index(dia) in range(cal.index('Fr'), 126 + cal.index('Fr')+1, 21):
+        return print('Você nasceu em uma Sexta-Feira.')
+    elif cal.index(dia) in range(cal.index('Sa'), 126 + cal.index('Sa')+1, 21):
+        return print('Você nasceu em um Sábado.')
+    elif cal.index(dia) in range(cal.index('Su'), 126 + cal.index('Su')+1, 21):
+        return print('Você nasceu em um Domingo.')
+DiaQueNasceu(cal,VerificaChar(dia))
+
+
